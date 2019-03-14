@@ -90,6 +90,25 @@ class CdnPlugin extends Plugin
                 },
                 $this->grav->output
             );
+                
+            // update srcset 
+            // https://regex101.com/r/V0FlCS/3
+            $regex = "/(srcset=[\'\"])((?:[^\"\'\s,]+\s*(?:\s+\d+[wx])(?:,\s*)?)+)([\"\'])/i";
+            // https://regex101.com/r/hREbKA/3         
+            $regex1 = "/(?:\s?$base)?(.*?(?:\.(?:$extensions)))(\s.*?[,]?(?=\s|$))/i";
+            $this->grav->output = preg_replace_callback(
+                $regex,
+                function ($matches) use ($blocks, $pullzone, $regex1) {
+                    $isBlock = $this->array_search_partial($blocks[0], $matches[0]);
+                    return $isBlock ? $matches[0] : $matches[1]. preg_replace_callback(
+                        $regex1,
+                        function($matches) use ($blocks, $pullzone) {
+                            return $pullzone. $matches[1]. $matches[2];
+                        },
+                        $matches[2] )  . $matches[3];
+                },
+                $this->grav->output
+            );
         }
     }
 
