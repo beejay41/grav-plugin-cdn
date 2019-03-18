@@ -1,3 +1,8 @@
+# v1.5.1
+## 14/03/2019 beejay41
+1. [](#bugfix)
+    * add processing for srcset
+
 # v1.5.0
 ## 10/09/2018
 

@@ -1,12 +1,12 @@
 name: CDN
-version: 1.5.0
+version: 1.5.1
 description: "Provides CDN support for Grav by rewriting URLs to take advantage of CDN Pull Zones"
 icon: cloud-upload
 author:
   name: Team Grav
   email: devs@getgrav.org
   url: http://getgrav.org
-homepage: https://github.com/getgrav/grav-plugin-cdn
+homepage: https://github.com/beejay41/grav-plugin-cdn
 demo: http://getgrav.org
 keywords: "cdn, plugin, performance, speed"
 bugs: https://github.com/getgrav/grav-plugin-cdn/issues
